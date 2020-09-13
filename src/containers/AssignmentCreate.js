@@ -55,9 +55,6 @@ class AssignmentCreate extends React.Component {
         </Hoc>
         );
     }
-
-
-
     return (
       <Form onFinish={onFinish}>
         <h1>Create an assignment</h1>
