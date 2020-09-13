@@ -50,7 +50,7 @@ class PostForm extends React.Component {
 
             <input type="text" className="input1" name="feed" onChange={this.handleChange} placeholder="Share Something"/>
           {' '}
-          <Button className="button" variant="success" size="lg">Share</Button>
+          <Button className="button" variant="success" size="lg" type="submit">Share</Button>
         </form>
       </div>
     )
