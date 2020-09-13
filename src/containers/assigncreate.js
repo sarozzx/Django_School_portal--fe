@@ -29,6 +29,7 @@ class AssignmentCreate extends React.Component {
             questions
         }
         this.props.createASNT(this.props.token,asnt);
+        this.props.history.push('/tests');
   };
 
 
@@ -152,7 +153,7 @@ class AssignmentCreate extends React.Component {
                   }}
                   block
                 >
-                  <PlusOutlined /> Add field
+                  <PlusOutlined /> Add Question
                 </Button>
               </Form.Item>
             </div>
