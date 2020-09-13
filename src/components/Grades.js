@@ -22,7 +22,7 @@ class Grades extends React.Component{
   }
     componentDidMount() {
         axios
-      .get(`http://127.0.0.1:8000/application/gassignment1/?assign_id=${this.props.id}`)
+      .get(`https://class-ro-om.herokuapp.com/application/gassignment1/?assign_id=${this.props.id}`)
       .then(res => {
         this.setState({ grades: res.data});
           console.log(this.state.grades)
