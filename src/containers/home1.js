@@ -8,11 +8,11 @@ class home1 extends React.Component {
     return (
         <div className="centered">
 
-            <h1 style={{fontFamily:"cursive"}}> --- </h1>
+            <h1 > --- </h1>
             <br/>
-            <h1 style={{fontFamily:"cursive"}}> CLASS ROOM </h1>
+            <h1 > CLASS ROOM </h1>
             <br/>
-            <h1 style={{fontFamily:"cursive"}}> --- </h1>
+            <h1 > --- </h1>
         </div>
 
     );

@@ -19,6 +19,8 @@
 }
 .centered h1{
     font-size: 500%;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+
 }
 @keyframes bounce {
     0%,
