@@ -3,9 +3,7 @@ import '../css/Main.css';
 import { connect } from "react-redux";
 
 class home1 extends React.Component {
-    componentDidMount() {
-        console.log(this.props.isAuthenticated);
-    }
+
   render() {
 
     return (
@@ -22,12 +20,5 @@ class home1 extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    isAuthenticated: state.auth.token !== null
-  };
-};
 
-
-
-export default connect(mapStateToProps)(home1);
+export default home1;
