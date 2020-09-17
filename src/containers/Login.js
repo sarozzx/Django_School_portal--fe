@@ -4,9 +4,27 @@ import { connect } from 'react-redux';
 import { Form, Input, Button, Checkbox,Spin } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import * as actions from '../store/actions/auth'
+import LoginCheck from "./logincheck";
 
 class NormalLoginForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            authen:undefined
+        }
 
+
+
+    }
+     componentDidMount() {
+        console.log(this.props.isAuthenticated);
+    }
+
+
+    onFinish = values => {
+            this.props.onAuth(values.username,values.password)
+            console.log(this.props.isAuthenticated)
+        };
     render() {
         let errorMessage = null;
         if (this.props.error) {
@@ -15,9 +33,9 @@ class NormalLoginForm extends React.Component {
         );
         }
         const onFinish = values => {
-            this.props.onAuth(values.username,values.password);
-            console.log(this.props.isAuthenticated)
-            this.props.history.push('/')
+            this.props.onAuth(values.username,values.password)
+            // this.setState({authen:this.props.isAuthenticated})
+
         };
 
         return (
@@ -35,7 +53,7 @@ class NormalLoginForm extends React.Component {
                             initialValues={{
                                 remember: true,
                             }}
-                            onFinish={onFinish}
+                            onFinish={this.onFinish}
                         ><h1 >Login : </h1>
                                 <Form.Item
                                     name="username"
@@ -84,7 +102,8 @@ const mapStateToProps = (state) => {
     return {
         loading: state.loading,
         error: state.error,
-        err:state.auth.error
+        err:state.auth.error,
+            isAuthenticated: state.auth.token !== null
     }
 }
 

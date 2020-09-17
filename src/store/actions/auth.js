@@ -1,5 +1,8 @@
+
+import swal from 'sweetalert';
 import * as actionTypes from "./actionTypes";
 import axios from 'axios';
+import {func} from "prop-types";
 
 export const authStart=()=>{
     return{
@@ -56,8 +59,24 @@ export const authLogin=(username,password)=>{
         localStorage.setItem("user", JSON.stringify(user));
         dispatch(authSuccess(user));
         dispatch(checkAuthTimeout(3600));
+        window.location.href = '/';
       })
       .catch(err => {
+
+        if(err.response){
+                    const a={...err}
+                    console.log("hello")
+
+                  if (a.response.status === 401) {
+                    swal({
+                      title: "Wrong Credentials ! ",
+
+                      icon: "warning",
+
+                      dangerMode: true,
+                    });
+                }
+                }
         dispatch(authFail(err));
       });
     }

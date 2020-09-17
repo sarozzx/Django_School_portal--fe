@@ -1,10 +1,13 @@
 import React from "react";
 import '../css/Main.css';
-
+import { connect } from "react-redux";
 
 class home1 extends React.Component {
+    componentDidMount() {
+        console.log(this.props.isAuthenticated);
+    }
   render() {
-    console.log(this.props.is_teacher)
+
     return (
         <div className="centered">
 
@@ -19,7 +22,12 @@ class home1 extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null
+  };
+};
 
 
 
-export default (home1);
+export default connect(mapStateToProps)(home1);

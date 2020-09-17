@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {Card, message, Skeleton} from "antd";
+import {Card, List, message, Skeleton} from "antd";
 import Questions from "./Questions";
 import Choices from "../components/Choices";
 import { getASNTSDetail } from "../store/actions/assignments";
@@ -102,7 +102,22 @@ class AssignmentDetail extends React.Component {
           <Hoc>
             {this.props.loading ? (
               <Skeleton active />
-            ) : (<div>
+            ) : (
+                this.props.is_teacher?(
+                    <div>
+                      <h3 style={{ margin: "16px 0" }}>Tests List</h3>
+
+
+                      <List
+                        size="large"
+
+                        dataSource={this.props.assignments}
+                        renderItem={item => this.renderItem(item)}
+                      />
+                    </div>
+                    )
+                    :
+                    (<div>
 
               <Card title={title}>
                 <Questions
@@ -133,7 +148,7 @@ class AssignmentDetail extends React.Component {
 
                 />
                                     </Card>
-                </div>
+                </div>)
 
             )}
           </Hoc>
@@ -149,7 +164,8 @@ const mapStateToProps = state => {
     token: state.auth.token,
     username: state.auth.username,
     currentAssignment: state.assignments.currentAssignment,
-    loading: state.assignments.loading
+    loading: state.assignments.loading,
+    is_teacher:state.auth.is_teacher,
   };
 };
 
